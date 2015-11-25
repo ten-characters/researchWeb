@@ -1,0 +1,80 @@
+    <head>
+        <title> oops! </title>
+    </head>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+        html {
+          background: url(static/images/background.png) no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          overflow-x: hidden;
+        }
+        .container {
+            display: table;
+            height: 90%;
+            position:absolute;
+            overflow:hidden;
+            width:100%;
+            margin-bottom: 0px;
+        }
+        .helper {
+            #position: absolute;
+            #top: 30%;
+            display: table-cell;
+            vertical-align: middle;
+            margin-bottom: 0px;
+        }
+        section{
+            text-align: center;
+        }
+        h1{
+            font-family: 'Droid Sans', sans-serif;
+            color: #f1f1f1;
+            font-size: 2.5em;
+        }
+        p{
+            color: lightgrey;
+            font-size: 1.5em;
+        }
+        #truckOn{
+            color: white;
+            font-style: italic;
+        }
+        #homeButton{
+            background-color: purple;
+            text-decoration: none;
+            color: white;
+            max-width: 200px;
+            height: 40px;
+            margin: 0 auto;
+            border-radius: 10px;
+            padding-top: 15px;
+        }
+        #homeButton:hover{
+            opacity: .8;
+        }
+         a{
+             text-decoration: none;
+         }
+    </style>
+    <body>
+        <div class="container">
+        <div class="helper">
+            <section>
+            <h1>Form Error!</h1>
+            <p>It appears there was a mistake on the form.</p>
+            <p id="truckOn">Truck on!</p>
+            <a href="/register"><div id="homeButton"> Back To Form </div></a>
+        </section>
+        </div>
+        </div>
+    </body>
+</html>

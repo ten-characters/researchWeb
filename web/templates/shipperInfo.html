@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title> Pallet </title>
+    		<meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<link rel="stylesheet" type="text/css" href="static/css/base.css">
+ 		<link rel="stylesheet" type="text/css" href="static/css/infoSheet.css"/>
+		<link rel="shortcut icon" href="static/images/favicon.ico"/>
+
+		<!-- Fonts imported from Google -->
+    		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'/>
+		
+		<!-- javascript/jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		
+		<!-- Google analytics -->
+		<meta name="google-site-verification" content="xe7JLP6z5UD8BnvP6QnXGjCd1-HMIHlsm8PyiPk3jKE" />
+			<script>
+			$( document ).ready(function() {
+				$("#signInInfo").hide();
+				{% if signingIn %}
+					$("form").show();
+				{% endif %}
+			});
+			function dropDownLogIn(){
+				$("#signInInfo").slideToggle();
+			}
+		</script>
+
+	</head>
+	
+	<body id="shipperInfo">
+		<div class="top shipper">
+		<header>
+			<div class="container">
+				<a href="index"><img src="static/images/whiteLogo.png" id="logo" height="35px"></a>
+				<div id="signIn" onclick="dropDownLogIn()">
+					<p>Sign In</p>
+					<img src="static/images/downTriangle.png" height="7" width="10" id="downTriangle">
+				</div>
+					<div id="signInInfo">
+						<form action="/login" method=post>
+							{% if signInFail %}
+								<p id="invalid"> Invalid email or password. </p>
+							{% endif %}
+						<input type="text" name="email" placeholder="Email">
+						<input type="password" name="password" placeholder="Password"><br>
+						<p id="forgot"><a href="reset/email">Forgot your password? </a></p>
+						<button type="submit">Login</button>
+					<input type="hidden" value="{{ next or '' }}" name="next">
+				</form>
+					</div>
+			</div>
+		</header>
+			<div class="topContainer">
+				<img src="static/images/compDemo.png" class="compDemo">
+				<div class="shipperTopInfo">
+				<h1>Shippers Meet Truckers</h1>
+				<p> We will directly connect you to a Pallet approved trucker near your pickup location. No more tedious phone calls or brokers cutting into your margins.</p>
+					<a href="/register/shipper">
+						<div class="button" id="shipperSignUp">Sign Up</div>
+						</a>
+			</div>					
+			</div>		
+		</div>
+		<div class="why">
+			<div class="container">
+				<h1> Why use pallet? </h1>
+				<div class="reason">
+					<img src="static/images/navIcon.png">
+					<h1> Precise </h1>
+					<p> Track exactly where your shipments are. </p>
+				</div>
+				<div class="reason">
+					<img src="static/images/monitoringIcon.png">
+					<h1> Convenient </h1>
+					<p>  Get real time updates on your documents. </p>
+				</div>
+				<div class="reason">
+					<img src="static/images/billsIcon.png">
+					<h1> Reliable </h1>
+					<p> Let us connect you to our network of approved drivers.  </p>
+				</div>
+			</div>
+		</div>
+		<div class="how">
+			<div class="container">
+			<img src="static/images/peggy.png" width="200px" id="topJack"/> 
+			<div id="quote">	
+			<h1>“I see exactly where my freight is right on a map.”</h1>
+			<p class="author"> Peggy Edwards, Jerhel Plastics</p>
+			<p> Join the hundreds of shippers who’ve signed up already.<br>Let’s change the way we move. </p>
+			</div>
+			<img src="static/images/peggy.png" width="200px" id="sideJack"/> 
+			</div>
+			
+		</div>
+		<div class="ready">
+			<div class="container">
+				<div class="readyInfo">
+					<p> Ready to change the way you move freight?</p>
+					<p>Questions? E-mail <u>support@truckpallet.com</u>. </p>
+				</div>
+				<a href="/register/shipper" class="button">Sign Up</a>
+			</div>
+		</div>
+		<footer>
+			<p> Copyright &copy; 2015 Pallet Technologies, Inc. All rights reserved. </p>
+		</footer>
+	</body>
+</html>

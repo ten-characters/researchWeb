@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<title> Pallet </title>
+    		<meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+ 		<link rel="stylesheet" type="text/css" href="/static/css/pending.css">
+		<link rel="shortcut icon" href="static/images/favicon.ico" />
+		<!-- Fonts imported from Google -->
+    		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<meta name="google-site-verification" content="xe7JLP6z5UD8BnvP6QnXGjCd1-HMIHlsm8PyiPk3jKE" />
+        	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	</head>
+	
+	<body>
+		<header>
+			<div class="container">
+				<img src="static/images/whiteLogo.png" id="logo" height="35px">
+				<div id="signIn">
+					<p>Sign In</p>
+					<img src="static/images/downTriangle.png" height="7" width="10" id="downTriangle">
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div id="leftColumn">
+				<div id="intro" class="box">
+
+					<div id="addUserPic">
+						<img src="static/images/addUserPic.png">
+					</div>
+
+					<div id="introContent">
+						<h1>Hi {{ first_name }}!</h1>
+						<p> Welcome to pallet. We’re excited to get you up and moving. We have live freight coming soon. If you have any questions, shoot us an email at support@truckpallet.com. Truck on!</p>
+					</div>
+
+					</div>
+			<div id="info"  class="box">
+				<h1>Your Information</h1>
+				<p> Finish adding your info and get pre-approved to accept freight as soon as it’s ready. </p>
+			</div>
+			<div class="lightBox">
+			<!--div id="getStarted">
+				<p> Get started by telling us a little bit  more about yourself. </p>
+				<div id="go"> Go </div>
+			</div-->
+			<div id="info">
+				<h1> The Basics </h1>
+				<h2> Tell us about yourself. </h2>
+				<div class="darkBox">
+                    <p class="title"> Name: </p>	<p class="input"> {{  first_name }} {{ last_name }}</p>
+                    <p class="title"> Email: </p>	<p class="input"> {{  email }} </p>
+                    {% if company_name %}
+                        <p class="title"> Company: </p>	<p class="input"> {{  company_name }}</p>
+                        <p class="title"> Phone Number: </p> <p class="input"> ({{ phone_number[:3] }}) {{ phone_number[3:6]}}-{{ phone_number[7:]}}</p>
+                        {% if ext %}
+                        <p class="title"> Extension: </p>	<p class="input"> {{  ext }} </p>
+                        {% endif %}
+                        <p class="title"> Address: </p> <p class="input"> {{ street_address }} <br> {{ city }}, {{ state }} {{ zip }}</p>
+                    {% endif %}
+				</div>
+                <h1> About your truck </h1>
+				<h2> Something funny and clever about trucks. </h2>
+               {% if truck_plate %}
+				<div class="darkBox half">
+                    <p class="title"> Plate: </p>	<p class="input"> {{  truck_plate }} </p>
+                    <p class="title"> Model: </p>	<p class="input"> {{  truck_model }} </p>
+                    <p class="title"> Year: </p>	<p class="input"> {{  truck_year }} </p>
+                </div>
+                {% endif %}
+				<h1> About your trailer </h1>
+				<h2> Something funny and clever about trailers. </h2>
+               {% if trailer_plate %}
+				<div class="darkBox half">
+                    <p class="title"> Plate: </p>	<p class="input"> {{  trailer_plate }} </p>
+                    <p class="title"> Model: </p>	<p class="input"> {{  trailer_model }} </p>
+                    <p class="title"> Year: </p>	<p class="input"> {{  trailer_year }} </p>
+                    <p class="title"> Type: </p>	<p class="input"> {{  trailer_type }} </p>
+                    <p class="title"> Size: </p>	<p class="input"> {{  trailer_size }} feet </p>
+                </div>
+                {% endif %}
+				<h1> Documents </h1>
+				<h2> Last thing we need before you're ready to start moving. </h2>
+
+				<div class="darkBox">
+                    <p class="title"> MC Number </p>
+					<p class="documentField"> {{ mc_number }} </p>
+                </div>
+				<div class="darkBox">
+                    <p class="title"> DOT Number </p>
+					<p class="documentField"> {{ dot_number }} </p>
+                </div>
+				<div class="darkBox">
+                    <p class="title"> License </p>
+                </div>
+				<div class="darkBox">
+                    <p class="title"> Insurance </p>
+                </div>
+
+			</div>
+
+			
+			</div>
+				</div>
+
+			<div id="rightColumn">
+				<div id="ourStatus" class="box">
+					<h1>Our Status</h1>
+					<p> A look at what’s happening over at pallet HQ. </p>
+				</div>
+				<div id="referrals" class="box">
+					<h1>Referrals</h1>
+					<p> Get others excited about pallet and let us reward you for it.</p>
+					<div id="referralsInfo" class="lightBox">
+						<p> Your referral code: </p>
+						<p id="referralCode"> {{ referral_code }} </p>
+						<p> We'll give you $25 for every trucker you sign up. </p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

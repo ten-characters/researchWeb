@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/main_page.css" rel="stylesheet" type="text/css" >
+    <link href="/static/css/switch.css" rel="stylesheet" type="text/css" >
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7XqdOKP649fEBfzaUVpnHcKq3twfNhsM">
+    </script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
+
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<!-- Updated JavaScript url -->
+    <script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+{#    <script type="text/javascript"#}
+{#      src="/static/js/jquery.timepicker.js">#}
+{#    </script>#}
+{#    <link href="/static/css/jquery.timepicker.css" rel="stylesheet" type="text/css" >#}
+    <script type="text/javascript"
+      src="/static/js/main_page.js">
+    </script>
+
+
+    <script>
+    var email = "{{ email }}";
+    var token = "{{ token }}";
+    var new_shipment = "{{ new_shipment }}";
+    </script>
+    <script type="text/javascript"
+      src="/static/js/main_page_ajax.js">
+    </script>
+    <script>
+    var myloc = { lat: {{ location[0] }}, lng: {{ location[1] }}};
+        function initialize() {
+            var mapOptions = {
+                center: myloc,
+                zoom: 11,
+                disableDefaultUI: true
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+          }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+
+<script>
+
+$(document).ready(function(){
+    if (new_shipment == 'True'){
+        $('#new_shipment_thankyou').show();
+    }
+    $('#new_shipment_thankyou button').click(function(){
+        $('#new_shipment_thankyou').hide();
+    });
+    screenWidth = $(window).width()-50;
+    numOfTabs = $("#tabs li").length;
+    tabSpace = numOfTabs*200;
+    numOfVisibleTabs = (screenWidth - (screenWidth % 200))/200;
+    first = 1;
+    last = first + numOfVisibleTabs;
+    if (screenWidth < tabSpace){
+        $(".arrow").css("visibility", "visible");
+        for (var i=0; i<=numOfVisibleTabs; i++){
+            $("#tabs li:nth-child(" + i + ")").show("slide");
+        }
+        for (var j=numOfTabs; j>numOfVisibleTabs; j--){
+            $("#tabs li:nth-child(" + j + ")").hide();
+        }
+    }
+    else{
+        $(".arrow").css("visibility", "hidden");
+        for (var i=0; i<=numOfTabs; i++){
+            $("#tabs li:nth-child(" + i + ")").show("slide");
+        }
+    }
+    $(window).resize(function(){
+        first = 1;
+        screenWidth = $(window).width()-50;
+        numOfTabs = $("#tabs li").length;
+        tabSpace = numOfTabs*200;
+        numOfVisibleTabs = (screenWidth - (screenWidth % 200))/200;
+        last = first + numOfVisibleTabs;
+        // Used for Testing Purposes
+        /*$("#numOfTabs").text(numOfTabs);
+        $("#tabSpace").text(tabSpace);
+        $("#screenWidth").text(screenWidth);
+        $("#numOfVisibleTabs").text(numOfVisibleTabs);
+        $("#first").text(first);
+        $("#last").text(last);*/
+        if (screenWidth < tabSpace){
+            $(".arrow").css("visibility", "visible");
+            for (var i=0; i<=numOfVisibleTabs; i++){
+                $("#tabs li:nth-child(" + i + ")").show("slide");
+            }
+            for (var j=numOfTabs; j>numOfVisibleTabs; j--){
+                $("#tabs li:nth-child(" + j + ")").hide();
+            }
+        }
+        else{
+            $(".arrow").css("visibility", "hidden");
+            for (var i=0; i<=numOfTabs; i++){
+                $("#tabs li:nth-child(" + i + ")").show("slide");
+            }
+        }
+    });
+    $( "#leftArrow" ).click(function() {
+        if (first > 1){
+            first = first - 1;
+            last = first + numOfVisibleTabs;
+            $("#tabs li:nth-child(" + first + ")").show("slide");
+            $("#tabs li:nth-child(" + last + ")").hide("slide");
+            $("#first").text(first);
+        }
+    });
+    $( "#rightArrow" ).click(function() {
+        if (last <= numOfTabs){
+            $("#tabs li:nth-child(" + first + ")").hide("slide");
+            $("#tabs li:nth-child(" + last + ")").show("slide");
+            first = first + 1;
+            last = first + numOfVisibleTabs;
+            $("#first").text(first);
+            $("#last").text(last);
+        }
+    });
+    var toggleState = true;
+    $('#tabs').on("click", ".tab", function() {
+        if(toggleState) {
+            $(".tab").animate({"height":"35px","margin-top":"0px"}, 50);
+            $(this).animate({"height":"200px","margin-top":"-165","border-bottom":"solid 5px purple"}, 50);
+            map_type = $(this).attr('id');
+        } else {
+            $(".tab").animate({"height":"35px","margin-top":"0px"}, 50);
+            map_type = 'drivers';
+        }
+        toggleState = !toggleState;
+        mapdraw(true);
+    });
+});
+</script>
+    <script type="text/javascript"
+      src="/static/js/map_draw.js">
+    </script>
+
+<body>
+
+        <div id="map-canvas"></div>
+{#      <iframe width="100%" height="100%" frameborder="0" sty<script type="text/javascript"
+      src="/static/js/map_draw.js">
+    </script>le="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=14&center=40.7440,-74.0324&key=AIzaSyA7XqdOKP649fEBfzaUVpnHcKq3twfNhsM"></iframe>#}
+    <button id="new_shipment_button"><h4>New Shipment</h4></button>
+
+    <form class="newship NewShipmentInfo" id="checkout" method="post" action="/add_shipment" enctype="multipart/form-data">
+        <div class="new_shipment_box">
+            <button id="close" type="button">X</button>
+            <div id="what_box" class="inner_new_shipment_box">
+                <h4>What are you shipping?</h4>
+
+                <div id="shipment_size" >
+                    <h5 style="display: inline-block">Pallets</h5>
+                    <div style="display: inline-block; vertical-align: middle" class="switch">
+                        <input type="checkbox" name="truck_load" id="cb1" />
+                        <label for="cb1"></label>
+                    </div>
+                    <h5 style="display: inline-block">Truckload</h5>
+                </div>
+
+                <div>
+                    <input id="commodity" type="text" placeholder="Commodity" name="commodity">
+                </div>
+                <div id="reference_fields">
+                    <h5>Reference Numbers</h5>
+                    <div>
+                        <select class="primary reference_select reference_select_num_0">
+                            <option value="Reference" selected>Reference#</option>
+                            <option value="Bill of Lading">Bill of Lading #</option>
+                            <option value="Booking">Booking #</option>
+                            <option value="Customer">Customer #</option>
+                            <option value="Delivery">Delivery #</option>
+                            <option value="Pickup">Pickup #</option>
+                        </select>
+                        <input id="primary_ref" type="text" name="Reference"> *primary
+                        <input type="hidden" name="primary" value="Reference">
+                    </div>
+                    <button class="plus" type="button" style="display: inline"><b>+</b></button>
+                </div>
+                <div id="pallet_info">
+                    <label>
+                        <h5 style="float: left"># of pallets </h5><br>
+                        <input id="num_pallets" type="number" min="0" name="num_pallets">
+                    </label>
+                    <label>
+                        <h5 style="float: left">Pieces/Pallet </h5><br>
+                        <input id="num_pieces_per_pallet" type="number" min="0" name="num_pieces_per_pallet">
+                    </label>
+                    <label>
+                        <h5 style="float: left"> @  L</h5><br>
+                        <input id="size_l" type="number" min="0" placeholder="in." name="size_l">
+                    </label>
+                    <label>
+                        <h5 style="float: left"> x W</h5><br>
+                        <input id="size_w" type="number" min="0" placeholder="in." name="size_w">
+                    </label>
+                    <label>
+                        <h5 style="float: left"> x H</h5><br>
+                        <input id="size_h" type="number" min="0"placeholder="in."  name="size_h">
+                    </label>
+                    <label>
+                        <h5 style="float: left;">Total Weight</h5><br>
+                        <input id="weight" style="width: 65px" type="number" min="0" placeholder="Lbs" name="weight">
+
+                    </label>
+
+                </div>
+                <br><br><br><br>
+                <h5 style="text-align: center">Extra Needs</h5>
+                <div id="accessorial_charges">
+                    <div type="button" class="check-item">
+                        <input type="checkbox" name="jack">
+                        <button type="button" class="check-item"><h5>Jack</h5></button>
+                    </div>
+                    <div type="button" class="check-item">
+                        <input type="checkbox" name="lift_gate">
+                        <button type="button" class="check-item"><h5>Lift Gate</h5></button>
+                    </div>
+                    <div type="button" class="check-item">
+                        <input type="checkbox" name="lumper">
+                        <button type="button" class="check-item"><h5>Lumper</h5></button>
+                    </div>
+
+                </div>
+
+                <div class="next-group">
+                    <button type="button" id="what_next" class="next">Next</button>
+                    <h6 class="step">Step 1 0f 3</h6>
+                </div>
+            </div>
+
+            <div id="where_box" class="inner_new_shipment_box">
+                <h4>Where are you shipping?</h4>
+                <div>
+                     <label id="pickup_warehouse_select">
+                        Pickup Location<br>
+                        <select id="pickup_id" class="pickup warehouse_select" name="Pickup_id">
+                            <option value="" selected>None</option>
+
+                        </select>
+                         <button type="button" class="button mop newpwh">New</button>
+                     </label>
+
+                        <div class='popout newpuwh' style="float: left" hidden="">
+                            <label>
+                                Company Name<br>
+                                <input id="pwhcompanyname" style="width: 90%; margin-right: 3px" type='text' value="" name='pwhcompanyname'/>
+                            </label>
+                            <label>
+                                Contact Name<br>
+                                <input id="pwhcontactname" style="width: 90%; margin-right: 3px" type='text' value="" name='pwhcontactname'/>
+                            </label>
+                            <label>
+                                email <br>
+                                <input id="pwhemail" style="width: 90%; margin-right: 3px" type='email' value="" name='pwhemail'/>
+                            </label>
+                            <label>
+                                Phone <br>
+                                <input id="pwhphone" style="width: 100px; margin-right: 3px" type='text' value="" name='pwhphone'/>
+                            </label>
+                            <br>
+                            <label>
+                                address<br>
+                                <input id="pwhaddress" style="width: 150px; margin-right: 3px" type='text' value="" name='pwhaddress'/>
+                            </label>
+                            <label>
+                                zip<br>
+                                <input maxlength="5" style="width: 50px" type='text' value="" id="pwhzip" class="zip" name='pwhzip'/>
+                            </label>
+                            <label>
+                                city<br>
+                                <input style="width: 100px; margin-right: 3px" type='text' value="" id="pwhcity" name='pwhcity'/>
+                            </label>
+                            <label>
+                                state<br>
+                                <input maxlength="2" style="width: 25px" type='text' value="" id="pwhstate" name='pwhstate'/>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <br>
+                    <div>
+                        <label id="dropoff_warehouse_select">Dropoff Location<br>
+                            <select id="dropoff_id" class="dropoff warehouse_select" name="Dropoff">
+                                <option value="" selected>None</option>
+                            </select>
+                            <button type="button" class="button mop newdwh">New</button>
+                        </label>
+
+                        <div style="float: left" class='popout newdowh' hidden="">
+                            <label>
+                                Company Name<br>
+                                <input id="dwhcompanyname" style="width: 90%; margin-right: 3px" type='text' value="" name='dwhcompanyname'/>
+                            </label>
+                            <label>
+                                Contact Name<br>
+                                <input id="dwhcontactname" style="width: 90%; margin-right: 3px" type='text' value="" name='dwhcontactname'/>
+                            </label>
+                            <label>
+                                email <br>
+                                <input id="dwhemail" style="width: 90%; margin-right: 3px" type='email' value="" name='dwhemail'/>
+                            </label>
+                            <br>
+                            <label>
+                                Phone<br>
+                                <input id="dwhphone" style="width: 100px; margin-right: 3px" type='text' value="" name='dwhphone'/>
+                            </label>
+                            <label>
+                                address<br>
+                                <input id="dwhaddress" style="width: 150px; margin-right: 3px" type='text' value="" name='dwhaddress'/>
+                            </label>
+                            <label>
+                                zip<br>
+                                <input maxlength="5" style="width: 50px" type='text' value="" id="dwhzip" name='dwhzip'/>
+                            </label>
+                            <label>
+                                city<br>
+                                <input style="width: 100px; margin-right: 3px" type='text' value="" id="dwhcity" name='dwhcity'/>
+                            </label>
+                            <label>
+                                state<br>
+                                <input maxlength="2" style="width: 25px" type='text' value="" id="dwhstate" name='dwhstate'/>
+                            </label>
+                        </div>
+                    </div>
+                <div class="next-group" style="float: left; width: 100%">
+                    <button type="button" id="where_back" class="back">Back</button>
+                    <button type="button" id="where_next" class="next">Next</button>
+                    <h6 class="step">Step 2 of 3</h6>
+                </div>
+
+            </div>
+            <div id="when_box" class="inner_new_shipment_box">
+                <h4>When are you shipping?</h4>
+                <br>
+                <h4>Pickup</h4>
+                <section id="pickup_time">
+                    <label for="from"><h5>Date</h5>
+                    <input type="text" id="from" name="pickup_date">
+                    </label>
+                    <label>
+                        <h5>From </h5>
+                        <input id="pickup_time_start" class="timepicker" type="text" name="pickup_time_start">
+                    </label>
+                    <label>
+                        <h5>To</h5>-
+                        <input id="pickup_time_end" class="timepicker" type="text" name="pickup_time_end">
+                    </label>
+                </section>
+                <br><br><br><br>
+                <h4>Dropoff</h4>
+                <section id="dropoff_time">
+                    <label for="to"><h5>Date</h5>
+                    <input type="text" id="to" name="dropoff_date">
+                    </label>
+                    <label>
+                        <h5>From</h5>
+                        <input id="dropoff_time_start" class="timepicker" name="dropoff_time_start" type="text">
+                    </label>
+
+                    <label>
+                        <h5>To</h5>-
+                        <input id="dropoff_time_end" class="timepicker" name="dropoff_time_end" type="text">
+                    </label>
+                </section>
+                <div class="next-group">
+                    <button type="button" id="when_back" class="back">Back</button>
+                    <button type="button" id="when_next" class="next">Next</button>
+                    <h6 class="step">Step 3 0f 3</h6>
+                </div>
+            </div>
+            <div id="price_box" class="inner_new_shipment_box">
+                <h4 id="price"></h4>
+                <h5>Upload Delivery Order</h5>
+                <input type="file" name="delivery_order" class="filefield" required/>
+
+                <p>**Note: You will not be charged until the shipment has been verified as complete**</p>
+                <div id="payment-form"></div>
+                <input name="amount" class="amount" value="" hidden>
+                <div class="next-group">
+                    <button type="button" id="price_back" class="back">Back</button>
+                    <button id="done" class="next">Ship it</button>
+                </div>
+            </div>
+            <canvas id="new_shipment_form_progress" width="300" height="20" style="border:0px solid #000000;"></canvas>
+        </div>
+    </form>
+{#    take a look at the reload html function in main_page_ajax#}
+{#    feel free to change either one or leave two empty elements one for the heading snd one for the content in the popup#}
+
+    <div id="cancel_confirm">
+        <h4>Are you sure you want to cancel this shipment?</h4>
+        <button id="cancel_no">No</button>
+        <a href="" id="cancel_link"><button id="cancel_yes">Yes</button></a>
+    </div>
+    <div id="new_shipment_thankyou">
+          <h3>Thankyou for shipping with pallet!</h3>
+            <h4>Your shipment will appear in the tabs below.</h4>
+        <button>OK</button>
+    </div>
+    <img src="/static/images/logo_animated_white_medium.gif" id="loading">
+    <footer>
+        <p class="arrow" id="leftArrow"> < </p>
+            <ul id="tabs">
+            <!-- TEST DATA -->
+{#                <li class="tab">#}
+{#                    <p>Ref #191209</p>#}
+{#                    <img src="trucker.jpg" class="truckerPicture">#}
+{#                    <p class="firstName"> Happy </p>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/><br>#}
+{#                    <button type="button">B.O.L.</button>#}
+{#                    <button type="button">D.O.</button>#}
+{#                    <button type="button">P.O.D.</button>#}
+{#                </li>#}
+{#                <li class="tab">#}
+{#                    <p>Ref #023943</p>#}
+{#                    <img src="trucker.jpg" class="truckerPicture">#}
+{#                    <p class="firstName"> Happier </p>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/><br>#}
+{#                    <button type="button">D.O.</button>#}
+{#                    <button type="button">P.O.D.</button>#}
+{#                </li>#}
+{#                <li class="tab">#}
+{#                    <p>Ref #191209</p>#}
+{#                    <img src="trucker.jpg" class="truckerPicture">#}
+{#                    <p class="firstName"> Happiest </p>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/>#}
+{#                    <img src="/static/stars/star-white32.png" width="20px" class="star"/><br>#}
+{#                    <button type="button">B.O.L.</button>#}
+{#                    <button type="button">D.O.</button>#}
+{#                    <button type="button">P.O.D.</button>#}
+{#                </li>#}
+{#                <li class="tab">Ref #491209</li>#}
+{#                <li class="tab">Ref #591209</li>#}
+{#                <li class="tab">Ref #691209</li>#}
+            </ul>
+        <p class="arrow" id="rightArrow"> > </p>
+    </footer>
+</body>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script>
+var clientToken = '{{ client_token }}';
+    braintree.setup(clientToken, "dropin", {
+      container: "payment-form"
+    });
+    </script>
+{% endblock %}
+</html>

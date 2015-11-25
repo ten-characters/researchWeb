@@ -1,0 +1,336 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+html, body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+html {
+  overflow-y: auto;
+}
+a{
+  text-decoration: none;
+}
+input[type='text'],
+input[type='password'],
+textarea {
+  font-size: 16px;
+}
+.outer {
+  display: table;
+  height: 100%;
+  position:absolute;
+  z-index: 10;
+  width:100%;
+  margin-bottom: 0px;
+}
+.inner {
+  #position: absolute;
+  #top: 40%;
+  display: table-cell;
+  vertical-align: middle;
+  margin-bottom: 0px;
+}
+
+#index #bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#index #container{
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 5;
+  position: relative;
+}
+
+#index #menuContainer{
+  width: 90%;
+  max-width: 1400px;
+}
+#index #container #info{
+  width: 43%;
+  float: left;
+  padding-left: 10px;
+  height: 500px;
+}
+#index #container #demos{
+  width: 55%;
+  float: left;
+  border: 1px white;
+  text-align: center;
+  position: relative;
+}
+#index #container #demos #slideshow img{
+  width: 520px;
+  margin: 20px auto;
+  opacity: .8;
+}
+/* pallet truck logo */
+#index #container #info .truckLogo{
+  margin: 0 auto;
+  width: 90%;
+  float: left;
+  opacity: .8;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+#index h2{
+  font-size: 2.5em;
+  opacity: .8;
+  font-family: 'Droid Sans', sans-serif;
+}
+#index p{
+  opacity: .8;
+  margin-top: 20px;
+  font-size: 1.5em;
+  padding-right: 10px;
+}
+#index #buttons{
+  margin-top: 30px;
+  overflow: hidden;
+}
+#index #buttons div{
+  float: left;
+  border: solid 2px white;
+  opacity: .8;
+  height: 30px;
+  padding-bottom: 10px;
+  padding-top: 18px;
+  width: 45%;
+  border-radius: 10px;
+  text-align: center;
+  margin-right: 0px;
+}
+#index #buttons div:first-child{
+  margin-right: 20px;
+}
+#index #buttons div:hover{
+  opacity: .5;
+  cursor: pointer;
+}
+#index #moreInfo{
+  margin-left: 45%;
+}
+#index #moreInfo .moreInfoButton {
+  margin-left: 20px;
+  width: 83%;
+  margin-top: 15px;
+  float: top;
+}
+#index .logIn{
+  float: right;
+}
+#index .logIn:hover{
+  opacity: .8;
+  cursor: pointer;
+}
+#index .logIn p{
+  float: left;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+#index .logIn img{
+  margin-top: 6px;
+  float: left;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+.stackedLogo{
+    display: none;
+}
+#index #container #demos{
+    opacity: 1 !important;
+}
+#index #container #demos #slideshow {
+   margin-top: 10px;
+}
+.logIn{
+  z-index: 120;
+  position: relative;
+  float: right;
+}
+.logIn:hover{
+  cursor: pointer;
+  opacity: .8;
+}
+#signInInfo{
+  z-index: 120;
+  position: relative;
+  float: right;
+  margin-right: -150px;
+  top: 40px;
+  width: 250px;
+  height: 215px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #14181b;
+}
+
+#signIn input{
+  background-color: transparent;
+  border: solid 1px white;
+  border-radius: 3px;
+  height: 30px;
+  margin-top: 10px;
+  width: 85%;
+  padding-left: 10px;
+}
+
+#signInInfo #forgot, #signInInfo #invalid{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  font-size: .9em;
+  opacity: .8;
+  margin-top:5px;
+  margin-left: 3px;
+}
+
+#signInInfo #invalid{
+  color: lightcoral;
+}
+#signInInfo #forgot:hover, #signInInfo #invalid:hover{
+  cursor: pointer;
+  opacity: .8;
+}
+
+
+#signInInfo button{
+  background-color: #110a2b;
+  border: none;
+  height: 30px;
+  width: 85%;
+  margin-top: 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+#signInInfo button:hover{
+  opacity: .8;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  #index h2{
+    font-size: 2em;
+  }
+  #index #container #demos #slideshow img{
+    opacity: 1 !important;
+    width: 500px;
+    margin: 20px auto;
+  }
+}
+@media (max-width: 995px) {
+  #index h2{
+    font-size: 1.8em;
+  }
+  #index #container #demos #slideshow img{
+    width: 480px;
+    margin: 20 auto;
+  }
+  #index p{
+    font-size: 1.3em;
+  }
+}
+@media (max-width: 895px) {
+  #index #demos {
+    display: none;
+  }
+  #index #container #info{
+    width: 100%;
+    text-align: center;
+  }
+  #index #container #info .truckLogo{
+    margin: 20 auto;
+    width: 60%;
+    min-width: 300px;
+    position: relative;
+    float: none;
+  }
+  #index h2{
+    font-size: 2.5em;
+  }
+  .truckLogo{
+    display: block;
+  }
+}
+@media (max-width: 610px) {
+  .inner{
+    margin-top: 30px;
+    display: block;
+  }
+  #index #container{
+    top: 20px;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+  #index #buttons div{
+    float: none;
+    width: 80%;
+    margin: 15px auto;
+  }
+  #index #buttons div:first-child{
+    margin: 0px auto;
+    position: relative;
+  }
+  #index p{
+    font-size: 1.2em;
+  }
+  #index h2{
+    font-size: 1.7em;
+  }
+  #learnMore #downTriangle{
+    -ms-transform: rotate(-90deg); /* IE 9 */
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+  }
+  #index #container #info .stackedLogo{
+    margin: 0 auto;
+    width: 50%;
+    opacity: .8;
+    padding-bottom: 20px;
+    display: block;
+  }
+  .truckLogo{
+    display: none;
+  }
+  #index #moreInfo{
+    width: 95%;
+    margin-left: 10%;
+    margin-top: 10px;
+    text-align: center;
+  }
+#index #moreInfo .moreInfoButton{
+  width: 41.5%;
+  float: left;
+  text-align: center;
+  margin-left: 10px;
+  }
+#signInInfo{
+  width: 100%;
+  background-color: #14181b;
+  margin-left: 50px;
+  margin-top: 0px;
+  margin-right: -20px;
+  top: 0px;
+  height: 250px;
+}
+#signInInfo input{
+  height: 50px;
+}
+#signInInfo button{
+  height: 50px;
+}
+}

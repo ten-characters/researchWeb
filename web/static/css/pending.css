@@ -1,0 +1,136 @@
+#leftColumn{
+  width: 59%;
+  float: left;
+}
+#rightColumn{
+  padding-left: 50px;
+  width: 35%;
+  float: left;
+  margin-top: 35px;
+}
+#addUserPic{
+  background-size: contain;
+  width: 18%;
+  min-width: 107px;
+  float: left;
+  margin-top: 8px;
+  background-color: grey;
+  border: solid 3px lightgrey;
+}
+#addUserPic:hover{
+  cursor: pointer;
+}
+#addUserPic img{
+  width: 100%;
+}
+#introContent{
+  width: 76%;
+  float: right;
+}
+#info{
+  width: 100%;
+  padding: 10px 0px;
+  margin-top: 10px;
+  overflow: auto;
+}
+.box{
+  width: 100%;
+  padding: 10px 0px;
+  margin-top: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.lightBox{
+  background:rgba(255,255,255, 0.15);
+  margin-top: 10px;
+  padding: 20px;
+}
+.lightBox h1{
+  font-family: 'Droid Sans', sans-serif;
+  text-align: left;
+  font-size: 1.1em;
+}
+.lightBox h1{
+  font-family: 'Droid Sans', sans-serif;
+  text-align: left;
+  font-size: 1.2em;
+}
+.lightBox h2{
+  font-family: 'Droid Sans', sans-serif;
+  text-align: left;
+  font-size: 1em;
+  opacity: .6;
+}
+.darkBox{
+  background:rgba(1,1,1, 0.4);
+  margin-top: 10px;
+  padding: 20px;
+  overflow: auto;
+}
+.half{
+  width: 50%;
+}
+
+#getStarted{
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+#getStarted #go{
+  border: solid 2px;
+  border-radius: 10px;
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  height: 20px;
+  padding: 10px;
+  margin-top: 15px;
+}
+#getStarted #go:hover{
+  opacity: .7;
+  cursor: pointer;
+}
+#referralCode{
+  border: solid 1px white;
+  padding: 15px 5px;
+  font-size: 1.3em;
+  font-weight: bold;
+  width: 70%;
+  margin: 20px auto;
+}
+.title{
+float: left;
+width: 50%;
+font-weight: bold;
+}
+.input{
+width: 50%;
+float: right;
+opacity: .8;
+}
+.documentField{
+opacity: .8;
+width: 100%;
+}
+@media (max-width:880px){
+  #leftColumn {
+    float: none;
+    margin: 0 auto;
+    width: 90%;
+  }
+  #rightColumn{
+  display: none;
+  }
+}
+@media (max-width:680px){
+  #addUserPic {
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  #introContent{
+    width: 100%;
+  }
+}

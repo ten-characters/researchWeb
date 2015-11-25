@@ -1,0 +1,392 @@
+ #new_shipment_button{
+     position: absolute;
+     top: 90px;
+     left: 20px;
+     /*z-index: 2;*/
+     box-shadow: 5px 5px 3px grey;
+     padding: 2px;
+     padding-left: 7px;
+     padding-right: 7px;
+ }
+
+  #new_shipment_button:hover{
+      opacity: .9;
+  }
+
+  #loading{
+    position: absolute;
+    left: 50%;
+    margin-left: -112.5px;
+    top: 50%;
+    margin-top: -150px;
+    z-index: 100000;
+
+  }
+  #cancel_confirm{
+      position: absolute;
+      display: none;
+      height: 100px;
+      width: 300px;
+      left: 50%;
+      margin-left: -150px;
+      top: 50%;
+      margin-top: -50px;
+      background-color: black;
+      opacity: .85;
+      box-shadow: 10px 10px 5px grey;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+  }
+  #cancel_confirm button{
+      position: relative;
+      float: left;
+      bottom: 0px;
+      width: 50px;
+  }
+  #cancel_confirm #cancel_yes{
+      float: right;
+  }
+  #new_shipment_thankyou {
+      position: absolute;
+      display: none;
+      height: 120px;
+      width: 450px;
+      left: 50%;
+      margin-left: -225px;
+      top: 50%;
+      margin-top: -60px;
+      background-color: black;
+      opacity: .85;
+      box-shadow: 10px 10px 5px grey;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+  }
+  #new_shipment_thankyou button{
+      position: absolute;
+      left: 50%;
+      margin-left: -25px;
+      width: 50px;
+  }
+ .inner_new_shipment_box{
+     display: none;
+     height: inherit;
+     padding: 10px;
+     padding-bottom: 30px;
+     z-index: 10;
+     font-family: 'Montserrat', sans-serif;
+ }
+ #close{
+     position: absolute;
+     right: 30px;
+     background-color: transparent;
+     border: 0px;
+     font-size: 1.2em;
+     font-weight: bold;
+ }
+
+ #close:hover{
+     opacity: .5;
+ }
+
+ .switch{
+     padding: 10px;
+ }
+ button{
+     background-color: purple;
+     opacity: 0.95;
+     border-color: white;
+     border-radius: 8px;
+     color: white;
+     padding: 4px;
+ }
+
+ button:hover{
+     opacity: .5;
+ }
+ .new_shipment_box{
+     position: absolute;
+     /*z-index: 4;*/
+     display: none;
+     left: 50%;
+     margin-left: -320px;
+     top: 50%;
+     margin-top: -240px;
+     width: 640px;
+     height: 480px;
+     background-color: black;
+     /*border: 2px solid rgba(170, 0, 255, 0.95);*/
+     border-radius: 20px;
+     box-shadow: 10px 10px 5px grey;
+     opacity: .85;
+     color: white;
+     padding: 20px;
+ }
+
+ .plus{
+     display: inline;
+ }
+ #new_shipment_form_progress{
+     position: absolute;
+     left: 170px;
+     bottom: 15px;
+     border: 1px solid white;
+ }
+ .next{
+     float: right;
+     margin-right: 10px;
+     margin-bottom: 10px;
+     padding: 5px;
+ }
+ .back{
+     float: left;
+     margin-left: 10px;
+     margin-bottom: 10px;
+     padding: 5px;
+ }
+ .next-group{
+     position: absolute;
+     bottom: 0px;
+     right: 0px;
+     width: 100%;
+ }
+ .step{
+     color: gray;
+     float: right;
+     margin-bottom: 15px;
+     margin-right: 10px;
+ }
+ /*.tabs{*/
+    /*overflow: auto;*/
+    /*height: 30px;*/
+    /*position:absolute;*/
+    /*background-color: #373837;*/
+    /*color: white;*/
+     /*bottom: 2px;*/
+ /*}*/
+/*#shipments_tabs{*/
+    /*position: relative;*/
+    /*height: 50px;*/
+    /*bottom: 2px;*/
+    /*display: block;*/
+    /*list-style: none outside none;*/
+    /*overflow: auto;*/
+    /*white-space: nowrap;*/
+/*}*/
+/*.tab{*/
+    /*display: block;*/
+    /*float: left;*/
+    /*height: 30px;*/
+    /*width: 200px;*/
+    /*background-color: rgba(150, 0, 255, 0.95);*/
+    /*border: 2px solid rgba(255, 255, 255, 0.95);*/
+    /*border-bottom: none;*/
+    /*border-top-left-radius: 8px;*/
+    /*border-top-right-radius: 8px;*/
+    /*text-align: center;*/
+    /*color: white;*/
+    /*white-space: nowrap;*/
+/*}*/
+.minus{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: -18px;
+    font-size: 30px;
+    padding: 0px;
+    padding-bottom: 23px;
+}
+label{
+    float: left;
+    padding-left: 5px;
+}
+input[type='number']{
+    width: 50px;
+}
+#when_box input{
+    width: 100px;
+}
+button .check-item{
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(170,0,255,.95);
+}
+
+h5{
+    padding: 0px 5px;
+}
+
+div .check-item{
+    float: left;
+    margin-right: 5px;
+    padding: 0px 10px;
+}
+
+.check-item input{
+    position: absolute;
+    top: -99999px;
+}
+input[type=checkbox]:checked ~ button {
+    background-color: rgba(46, 204, 113, 0.95);
+}
+.new_shipment_box h4{
+    text-align: center;
+}
+#shipment_size{
+    position: relative;
+    left: 50%;
+    margin-left: -90px;
+}
+#accessorial_charges{
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+}
+#pickup_warehouse_select, #dropoff_warehouse_select{
+    margin-left: 175px;
+    margin-top: 75px
+}
+#pickup_time, #dropoff_time{
+    margin-left: 125px;
+}
+#payment-form{
+    position: relative;
+    top: 50%;
+    margin-top: -187px;
+}
+
+*{
+margin: 0px;
+padding: 0px;
+}
+html, body,
+#map-canvas{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: -20;
+}
+#map-canvas{
+min-height: 100%;
+position: relative;
+overflow-y: hidden;
+background-color: #f1f1f1;
+    min-height: 100%;
+z-index: 0;
+margin-bottom: -70px;
+}
+
+#map-canvas{
+content: "";
+display: block;
+}
+/* Tabs */
+footer{ position: relative;
+height: 15px;
+float: bottom;
+border-bottom: solid 35px black;
+
+}
+
+footer ul li{
+float: left;
+height: 35px;
+width: 200px;
+display: inline;
+background-color: black;
+color: white;
+font-family: 'Montserrat', sans-serif;
+border-bottom: solid 5px black;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+padding-top: 10px;
+text-align: center;
+visibility: visible;
+overflow-y: hidden;
+}
+footer ul li:hover{
+border-bottom: solid 5px purple;
+cursor: pointer;
+}
+footer ul li img.truckerPicture{
+width: 60px;
+    height:60px;
+border-radius: 30px;
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+margin-top: 10px;
+}
+footer ul li button{
+color: white;
+background-color: black;
+margin: 0px 3px;
+border-radius: 5px;
+padding: 3px;
+}
+footer ul li button:hover{
+opacity: .7;
+}
+footer ul li .star{
+margin-bottom: 10px;
+}
+footer p:first-child{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+footer p.arrow{
+width: 25px;
+float: left;
+display: inline;
+background-color: transparent;
+text-align: center;
+font-size: 1.2em;
+color: white;
+margin-top: 20px;
+visibility: hidden;
+}
+/*footer div.arrow{*/
+/*width: 25px;*/
+/*float: right;*/
+    /*margin-right: -25px;*/
+/*display: inline;*/
+/*background-color: transparent;*/
+/*text-align: center;*/
+/*font-size: 1.2em;*/
+/*color: white;*/
+/*margin-top: 20px;*/
+/*visibility: hidden;*/
+/*}*/
+footer .arrow:hover{
+color: grey;
+}
+#statusColor{
+width: 12px;
+height: 12px;
+border-radius: 6px;
+float: left;
+margin-left: 15px;
+margin-right: -40px;
+margin-top: 4px;
+}
+.redStatus{
+color: red;
+background: -webkit-radial-gradient(red, darkred); /* Safari 5.1 to 6.0 */
+background: -o-radial-gradient(red, darkred); /* For Opera 11.6 to 12.0 */
+background: -moz-radial-gradient(red, darkred); /* For Firefox 3.6 to 15 */
+background: radial-gradient(red, darkred); /* Standard syntax */ }
+.yellowStatus{
+color: yellow;
+background: -webkit-radial-gradient(gold, darkgoldenrod); /* Safari 5.1 to 6.0 */
+background: -o-radial-gradient(gold, darkgoldenrod); /* For Opera 11.6 to 12.0 */
+background: -moz-radial-gradient(gold, darkgoldenrod); /* For Firefox 3.6 to 15 */
+background: radial-gradient(gold, darkgoldenrod); /* Standard syntax */
+}
+.greenStatus{
+color: green;
+background: -webkit-radial-gradient(green, darkgreen); /* Safari 5.1 to 6.0 */
+background: -o-radial-gradient(green, darkgreen); /* For Opera 11.6 to 12.0 */
+background: -moz-radial-gradient(green, darkgreen); /* For Firefox 3.6 to 15 */
+background: radial-gradient(green, darkgreen); /* Standard syntax */ }

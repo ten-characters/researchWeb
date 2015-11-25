@@ -1,0 +1,422 @@
+#truckerInfo #buttons .button:first-child{
+  padding: 0px;
+  height: 60px;
+  background-color:black;}
+.top{
+  width: 100%;
+  background-image: url('../images/gray.png');
+}
+.topContainer{
+  width: 90%;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding-top: 40px;
+  overflow: auto;
+  z-index: 5;
+}
+#shipperInfo .topContainer{
+    padding: 50px 0px;
+}
+.top .container{
+  text-align: center;
+  margin: auto;
+}
+#shipperSignUp{
+  margin-top: 10px;
+}
+.compDemo{
+float: left;
+width: 40%;
+margin-bottom: 25px;
+display: block;
+}
+.shipperTopInfo{
+  float: left;
+  width: 55%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.shipperTopInfo h1{
+  margin-bottom: 15px;
+}
+#shipperInfo .top .button{
+ float: left;
+  margin-left: 0px;
+}
+/* formats phone view */
+.crop-height {
+        width: 35%;
+	max-width: 360px;
+	max-height: 350px;
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+img.scale {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto !important;
+  /* repeat to fix obscure IE + moz bug */
+  display: block;
+  width: 100%
+  max-width: 100%;
+  height: auto !important;
+ }
+
+.topInfo{
+  width: 56%;
+  float: right;
+  padding: 50px 0px 0px 50px;
+}
+#shipperInfo .topInfo{
+  width: 56%;
+  height: 350px;
+  float: right;
+  padding-top: 10px;
+}
+.topInfo h1{
+  margin-bottom: 20px;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 2.3em;
+  font-weight: bold;
+}
+.topInfo p{
+  font-size: 1.2em;
+}
+#buttons{
+  width: 56%;
+  height: 60px;
+  float: right;
+  margin-top: 20px
+}
+#buttons .button, .button{
+  width: 45%;
+  float: left;
+  background-color: #110a2b;
+  height: 40px;
+  padding-top: 20px;
+  border-radius: 8px;
+  margin-right: 25px;
+  max-width: 200px;
+  text-align: center;
+  min-width: 167px;
+}
+
+#buttons .button:last-child{
+  margin-right: 0px;
+}
+#buttons .button:hover{
+  opacity: .8;
+  cursor: pointer;
+}
+.why{
+  width: 100%;
+  background-color: lightgray;
+  overflow: auto;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+.why h1{
+  color: #110a2b;
+  padding: 25px 0px;
+  text-align: left;
+}
+.why .reason{
+  width: 30%;
+  float: left;
+  height: auto;
+  margin-right: 20px;
+}
+.why .reason img{
+  width: 30%;
+}
+.why .reason p{
+  color: #2e2e2e;
+  vertical-align: middle;
+  padding-top: 5%;
+}
+.why .reason h1{
+  padding: 0px;
+  margin-top: 10px;
+  font-size: 1.5em;
+  text-align: center;
+}
+.how{
+  width: 100%;
+  background-color: #110a2b;
+  overflow: auto;
+  padding: 40px 0px;
+}
+.how img{
+  float: left;
+  margin-left: 20px;
+}
+.ready{
+  width: 100%;
+  background-image: url('../images/gray.png');
+  overflow: auto;
+  padding: 35px 0px;
+  text-align: center
+}
+.ready .container .button{
+  margin: 15px auto;
+  width: 100%;
+}
+.button:hover{
+  cursor: pointer;
+  opacity: .8;
+}
+.ready .readyInfo{
+  opacity: .7;
+  padding-top: 10px;
+  width: 60%;
+  float: left;
+}
+.ready .button{
+  width: 35%;
+}
+footer{
+  width: 100%;
+  background: rgba(1,1,1,0.9);
+  overflow: auto;
+  text-align: center;
+  font-size: .8em;
+  padding: 20px 0px;
+}
+footer p{
+    color: #6e6e6e;
+}
+#quote{
+  width: 65%;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+#quote h1{
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+#quote .author{
+  opacity: .7;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+#sideJack{
+    display: block;
+  }
+#topJack{
+    display: none;
+  }
+header #signInInfo{
+  z-index: 1000;
+  position: absolute;
+  float: right;
+  top: 50px;
+  right: -75px;
+  width: 250px;
+  height: auto;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+  background: #1a1a1a;
+  opacity: 1 !important;
+}
+header #signInInfo input{
+  background-color: #D8D8D8;
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  width: 85%;
+  padding-left: 10px;
+  color: #14181b;
+}
+
+header input[type='text'],
+header input[type='password'],
+textarea {
+  font-size: 16px;
+}
+
+#signInInfo #forgot, #signInInfo #invalid{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  font-size: .9em;
+  margin-top:5px;
+  margin-left: 3px;
+}
+
+#signInInfo #invalid{
+  color: lightcoral;
+}
+
+#signInInfo button{
+  background-color: #110a2b;
+  border: none;
+  height: 30px;
+  width: 85%;
+  margin-top: 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+#signInInfo button:hover{
+  opacity: .8;
+  cursor: pointer;
+}
+@media (max-width: 1190px) {
+  header #signInInfo{
+    right:-20px;
+  }
+
+}
+@media (max-width: 1030px) {
+  .topInfo h1{
+    font-size: 1.8em;
+  }
+  .why .reason {
+    text-align: center;
+  }
+  .why .reason img{
+    float: none;
+    width: 40%;
+  }
+}
+@media (max-width: 810px) {
+  .topInfo h1{
+    font-size: 1.6em;
+  }
+  .topInfo p{
+    font-size: 1.1em;
+  }
+  header #signInInfo{
+    right:-10px;
+  }
+}
+@media (max-width: 735px) {
+  .compDemo{
+  display: none;
+  }
+  .shipperTopInfo{
+    margin: auto;
+    float: none;
+    width: 90%;
+    text-align: center;
+  }
+#shipperInfo .top .button{
+  margin: 15px auto;
+  float: none;
+  }
+  .crop-height{
+    display: none;
+  }
+  .topInfo{
+    width: 100%;
+    padding-top: 0px;
+    text-align: center
+  }
+  .topInfo h1{
+    font-size: 2.5em;
+  }
+  .topInfo p{
+    font-size: 1.3em;
+  }
+  #buttons{
+    width: 370px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 160px;
+    float: none;
+    text-align: center;
+  }
+  #buttons .button{
+    width: 167px;
+    margin: 10px auto;
+    margin-left: 10px;
+  }
+  .why .reason{
+    float: none;
+    margin: 0 auto;
+    width: 60%;
+    font-size: 1.1em;
+    margin-top: 10px;
+  }
+  .why h1{
+    text-align: center;
+  }
+  .how{
+   text-align: center;
+  }
+  #topJack{
+    float: none;
+    margin: auto;
+    display: block;
+    margin-bottom: 15px;
+  }
+  #sideJack{
+    display: none;
+    float: left;
+  }
+  #quote{
+  width: 100%;
+  float: none;
+  text-align: center;
+  margin-right: 10px;
+}
+#quote h1{
+  margin-bottom: 10px;
+}
+#quote .author{
+  opacity: .7;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+}
+@media (max-width: 500px) {
+  .topInfo p{
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 500px) {
+  .topInfo p{
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 690px) {
+  .ready .readyInfo{
+    width: 100%;
+  }
+  .ready .button{
+    margin: 10px auto;
+    width: 90%;
+    max-width: none;
+  }
+  #buttons{
+    width: 100%;
+  }
+  #buttons .button{
+    width: 95%;
+    max-width: none;
+  }
+  #buttons .button:first-child{
+    margin-bottom: 0px;
+  }
+  header #signInInfo{
+  width: 100%;
+  margin-top: 0px;
+}
+header #signInInfo input{
+  height: 50px;
+}
+header #signInInfo button{
+  height: 50px;
+}
+}
+.button{
+  text-decoration: none;
+  }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>**ADMIN**Pending APPS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.ui.draggable.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.alerts.js"></script>
+        <link media="screen" type="text/css" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.alerts.css"/>
+
+
+
+</head>
+<body>
+    <ul>
+        {% for application in applications %}
+            <li id="{{ application['_id'] }}">Name: {{ application['first_name'] }} {{ application['last_name'] }}
+                <br>
+                email: {{ application['email'] }}    Phone:  {{ application['phone'] }}
+                <br>
+                Billing Info
+                {{ application['billing_info']['address'] }} {{ application['billing_info']['city']}} {{ application['billing_info']['state'] }}
+                <br>
+                {{ application['company'] }}
+                <br>
+                {% if application['roles'][1]=='driver' %}
+                    Licence #: {{ application['driver_info']['license_number'] }}
+                    Licence Name: {{ application['driver_info']['license_name'] }}
+                    <br>
+                    DOB: {{ application['driver_info']['dob'] }}
+                    SSN: {{ application['driver_info']['ssn'] }}
+                    <br>
+                    DOT#: {{ application['driver_info']['dot_number'] }}
+                    HUT#:{{ application['driver_info']['hut_number'] }}
+                    <br>
+                    <a href={{ base_url }}{{ application['driver_info']['w9_form_path'] }}>w9</a>
+                    <a href={{ base_url }}{{ application['driver_info']['insurance_form_path'] }}>insurance</a>
+                    <a href={{ base_url }}{{ application['driver_info']['valid_authority_form_path'] }}>valid authority</a>
+                    <a href={{ base_url }}{{ application['driver_info']['ifta_form_path'] }}>ifta</a>
+                    <a href={{ base_url }}{{ application['driver_info']['irp_form_path'] }}>irp</a>
+                    <a href={{ base_url }}{{ application['driver_info']['license_path'] }}>licence</a>
+                <br>
+                {% endif %}
+                {% if application['user_type']=='shipper' %}
+
+                {% endif %}
+
+
+
+                <button id = {{ application['_id']['$oid'] }} name="accept" class="apply">Accept</button>
+                <input type="button" id = {{ application['_id']['$oid'] }} class="reject"  name="reject" value="Reject" />
+            </li>
+        {% endfor %}
+
+
+        <p>no applications at this time</p>
+
+    </ul>
+<script>
+/**
+ * Created by greg on 6/16/15.
+ */
+    $(document).ready(function(){
+        $('.apply').click(function(){
+           $.post("/apply/decision/" + $(this).attr('id'), {
+               is_accepted: true
+           });
+           $(this).parent().remove();
+        });
+        $('.reject').click(function(){
+            var r = prompt('Reason:', 'unknown');
+            if (r != null){
+                $.post("/apply/decision/" + $(this).attr('id'), {
+                    is_accepted:false,
+                    reason:r
+                });
+            }
+            $(this).parent().remove();
+        });
+    });
+
+
+
+</script>
+{#<link src="/static/admin.js"/>#}
+
+</body>
+</html>

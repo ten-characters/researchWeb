@@ -1,0 +1,138 @@
+<html>
+	<head>
+		<title> Pallet </title>
+    		<meta charset="UTF-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+ 		<link rel="stylesheet" type="text/css" href="/static/css/home.css">
+		<link rel="shortcut icon" href="static/images/favicon.ico" />
+		<!-- Fonts imported from Google -->
+    		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<meta name="google-site-verification" content="xe7JLP6z5UD8BnvP6QnXGjCd1-HMIHlsm8PyiPk3jKE" />
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-66761231-3', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            mobileView = false;
+            screenWidth = $(window).width();
+            $( document ).ready(function() {
+                $("#signInInfo").hide();
+                {% if signingIn %}
+                    $("form").show();
+                {% endif %}
+                $("#moreInfo").hide();
+                if (screenWidth < 610){
+                    mobileView = true;
+                    $("#shipperButton").text("Shipper");
+                    $("#truckerButton").text("Trucker");
+                }
+            $("#slideshow > div:gt(0)").hide();
+            });
+            $(window).resize(function(){
+                screenWidth = $(window).width();
+                if (screenWidth < 610) {
+                    mobileView = true;
+                    $("#shipperButton").text("Shipper");
+                    $("#truckerButton").text("Trucker");
+                }
+                if (screenWidth >= 610){
+                    mobileView = false;
+                    $("#learnMore").show();
+                    $("#moreInfo").hide();
+                    $("#shipperButton").text("I am a shipper");
+                    $("#truckerButton").text("I am a trucker");
+                }
+            });
+            function more(){
+                if (mobileView){
+                    $("#learnMore").hide();
+                    $("#moreInfo").fadeIn();
+                }
+                if (!mobileView){
+                    $("#moreInfo").fadeToggle();
+                }
+            }
+            function dropDownLogIn(){
+                    $("#signInInfo").slideToggle();
+            }
+            setInterval(function() {
+              $('#slideshow > div:first')
+                .hide()
+                .stop()
+                .next()
+                .show()
+                .end()
+                .appendTo('#slideshow');
+            },  3000);
+        </script>
+
+	</head>
+	
+	<body id="index">
+		<img src="static/images/background2.png" id="bg" alt="">
+		<div id="menuContainer">
+			<!--a href="logInMobile"> <div id="logInMobile" class="logIn"> <p>Sign In<p> <img src="static/images/downTriangle.png" height="7" width="10" id="downTriangle"> </div> </a-->
+			<div id="logInWeb" class="logIn" onclick="dropDownLogIn()"><p>Sign In<p><img src="static/images/downTriangle.png" height="7" width="10" id="downTriangle"></div>
+			<div id="signInInfo">
+				<form action="/login" method=post id="signIn">
+					{% if signInFail %}
+						<p id="invalid"> Invalid email or password. </p>
+            		{% endif %}
+
+					<input type="text" name="email" placeholder="Email">
+					<input type="password" name="password" placeholder="Password"><br>
+					<p id="forgot"><a href="reset/email">Forgot your password? </a></p>
+					<button type="submit">Login</button>
+					<input type="hidden" value="{{ next or '' }}" name="next">
+				</form>
+			</div>
+		</div>
+		<div class="outer">
+		<div class="inner">
+		<div id="container">
+			<div id="info">
+				<img src="static/images/whiteLogo.png" class="truckLogo">
+				<img src="static/images/stackedLogo.png" class="stackedLogo">
+				<h2> Join the revolution. </h2>
+				<p> Pallet efficiently matches freight to available truck drivers already on their route. No more brokers, load boards, or bidding. Better rates  and great service, for everyone.
+</p>
+				<div id="buttons">
+					<a href="/register/driver"> <div id="signUp"> Sign Up </div> </a>
+					<div id="learnMore" onclick="more()"> Learn More <img src="static/images/downTriangle.png" height="9" width="13" id="downTriangle"></div>
+					<section id="moreInfo">
+						<a href="shipperInfo"> <div id="shipperButton" class="moreInfoButton"> I am a shipper. </div></a>
+						<a href="truckerInfo"> <div id="truckerButton" class="moreInfoButton"> I am a trucker. </div></a>
+					</section>
+				</div>
+
+			</div>
+			<div id="demos">
+                        <div id="slideshow">
+                            <div>
+                                <img src="static/images/demo11.png" width="100">
+                            </div>
+                            <div>
+                                <img src="static/images/demo22.png" width="100">
+                            </div>
+                            <div>
+                                <img src="static/images/demo33.png" width="100">
+                            </div>
+                        </div>
+			</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</body>
+
+</html>
